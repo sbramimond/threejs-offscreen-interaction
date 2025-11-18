@@ -6,3 +6,7 @@
  - 我们在ui thread中创建一个副本，用来收集交互信息，并传入worker thread中来进行设置同步。
  - 可以低成本的解决OrbitControls等问题
  - 例子中有echarts和threejs的交互的例子。
+
+## 可以使用gltf-transfrom 来转换gltf文件
+
+
