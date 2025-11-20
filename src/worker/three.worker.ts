@@ -4,11 +4,8 @@ import * as Three from 'three';
 //     position: number[];
 //     rotation: number[];
 // }
-
-const A_B = 1;
-console.log(A_B);
-
 const THREE_CHANNEL = new BroadcastChannel('THREE:threeChannel');
+
 let camera = null;
 
 const CREATE_RENDER = (canvas) => {
