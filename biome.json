@@ -1,43 +1,43 @@
 {
-  "formatter": {
-    "enabled": true,
-    "formatWithErrors": false,
-    "indentStyle": "space",
-    "indentWidth": 4,
-    "lineEnding": "lf",
-    "lineWidth": 80,
-    "attributePosition": "auto"
-  },
-  "linter": {
-    "enabled": true,
-    "rules": {
-      "recommended": true,
-      "style": {
-        "useConst": "off"
-      }
-    }
-  },
-  "javascript": {
     "formatter": {
-      "jsxQuoteStyle": "double",
-      "quoteProperties": "asNeeded",
-      "arrowParentheses": "always",
-      "bracketSpacing": true,
-      "bracketSameLine": false,
-      "quoteStyle": "single",
-      "attributePosition": "auto",
-      "trailingCommas": "es5"
-    }
-  },
-  "overrides": [
-    {
-      "includes": ["src/**/*.{js,ts,tsx}"],
-      "formatter": {
-        "indentWidth": 4
-      }
-    }
-  ],
-  "files": {
+        "enabled": true,
+        "formatWithErrors": false,
+        "indentStyle": "space",
+        "indentWidth": 4,
+        "lineEnding": "lf",
+        "lineWidth": 80,
+        "attributePosition": "auto"
+    },
+    "linter": {
+        "enabled": true,
+        "rules": {
+            "recommended": true,
+            "style": {
+                "useConst": "off"
+            }
+        }
+    },
+    "javascript": {
+        "formatter": {
+            "jsxQuoteStyle": "double",
+            "quoteProperties": "asNeeded",
+            "arrowParentheses": "always",
+            "bracketSpacing": true,
+            "bracketSameLine": false,
+            "quoteStyle": "single",
+            "attributePosition": "auto",
+            "trailingCommas": "es5"
+        }
+    },
+    "overrides": [
+        {
+            "includes": ["src/**/*.{js,ts,tsx}"],
+            "formatter": {
+                "indentWidth": 4
+            }
+        }
+    ],
+    "files": {
         "includes": ["src/**/*"]
-  }
+    }
 }

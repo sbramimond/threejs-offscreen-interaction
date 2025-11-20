@@ -1,33 +1,29 @@
 import * as echarts from 'echarts';
 
-self.onmessage = async ({data: {canvas = null}}) => {
-
+self.onmessage = async ({ data: { canvas = null } }) => {
     // canvas.width = canvas.width * 2;
     // canvas.height = canvas.height * 2;
-    console.log('canvas', canvas);
-    let chart = echarts.init(
-        canvas,
-        null,
-        {
-            devicePixelRatio: 2,
-            width: canvas.width,
-            height: canvas.height
-        }
-    );
+    // console.log('canvas', canvas);
+    
+    let chart = echarts.init(canvas, null, {
+        devicePixelRatio: 2,
+        width: canvas.width,
+        height: canvas.height,
+    });
 
     let option = {
         title: {
             text: '饼图程序调用高亮示例',
-            left: 'center'
+            left: 'center',
         },
         tooltip: {
             trigger: 'item',
-            formatter: '{a} <br/>{b} : {c} ({d}%)'
+            formatter: '{a} <br/>{b} : {c} ({d}%)',
         },
         legend: {
             orient: 'vertical',
             left: 'left',
-            data: ['直接访问', '邮件营销', '联盟广告', '视频广告', '搜索引擎']
+            data: ['直接访问', '邮件营销', '联盟广告', '视频广告', '搜索引擎'],
         },
         series: [
             {
@@ -40,17 +36,17 @@ self.onmessage = async ({data: {canvas = null}}) => {
                     { value: 310, name: '邮件营销' },
                     { value: 234, name: '联盟广告' },
                     { value: 135, name: '视频广告' },
-                    { value: 1548, name: '搜索引擎' }
+                    { value: 1548, name: '搜索引擎' },
                 ],
                 emphasis: {
                     itemStyle: {
                         shadowBlur: 10,
                         shadowOffsetX: 0,
-                        shadowColor: 'rgba(0, 0, 0, 0.5)'
-                    }
-                }
-            }
-        ]
+                        shadowColor: 'rgba(0, 0, 0, 0.5)',
+                    },
+                },
+            },
+        ],
     };
 
     // 使用刚指定的配置项和数据显示图表。
