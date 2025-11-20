@@ -4,7 +4,7 @@ self.onmessage = async ({data: {canvas = null}}) => {
 
     // canvas.width = canvas.width * 2;
     // canvas.height = canvas.height * 2;
-
+    console.log('canvas', canvas);
     let chart = echarts.init(
         canvas,
         null,

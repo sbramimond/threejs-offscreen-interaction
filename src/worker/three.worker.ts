@@ -1,9 +1,9 @@
 import * as THREE from 'three';
 
-interface ICameraData {
-    position: number[];
-    rotation: number[];
-}
+// interface ICameraData {
+//     position: number[];
+//     rotation: number[];
+// }
 
 let threeChannel = new BroadcastChannel('THREE:threeChannel');
 let camera = null;
@@ -23,6 +23,7 @@ let createRender = (canvas) => {
     let geometry = new THREE.BoxGeometry( 1, 1, 1 );
     let material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
     let cube = new THREE.Mesh( geometry, material );
+
     scene.add( cube );
 
     camera.position.z = 5;
@@ -34,13 +35,13 @@ let createRender = (canvas) => {
     }
 }
 
-self.onmessage = function ({data: {canvas = null, type = '', data = {}}}) {
+self.onmessage = ({data: {canvas = null}}) => {
     if(canvas) {
         createRender(canvas);
     }
 };
 
-threeChannel.onmessage = function ({data: {type = '', data = {}}}) {
+threeChannel.onmessage = ({data: {type = '', data = {}}}) => {
     if (type === 'cameraUpdate')  {
         let {position = [], rotation = []} = data;
 
