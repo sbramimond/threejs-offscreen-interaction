@@ -13,8 +13,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@types/three": "^0.181.0",
-    "@types/webworker": "^0.0.43",
     "antd": "^5.29.1",
     "axios": "^1.13.2",
     "echarts": "^6.0.0",
@@ -37,6 +35,8 @@
     "@biomejs/biome": "2.3.6",
     "@types/react": "^19.2.6",
     "@types/react-dom": "^19.2.3",
+    "@types/three": "^0.181.0",
+    "@types/webworker": "^0.0.43",
     "@types/web": "^0.0.294",
     "babel-loader": "^10.0.0",
     "babel-plugin-react-transform": "^3.0.0",

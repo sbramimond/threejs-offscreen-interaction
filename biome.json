@@ -1,4 +1,7 @@
 {
+    "files": {
+        "includes": ["package.json", "src/**/*"]
+    },
     "formatter": {
         "enabled": true,
         "formatWithErrors": false,
@@ -36,8 +39,5 @@
                 "indentWidth": 4
             }
         }
-    ],
-    "files": {
-        "includes": ["src/**/*"]
-    }
+    ]
 }
