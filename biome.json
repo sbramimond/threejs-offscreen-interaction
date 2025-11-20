@@ -16,7 +16,21 @@
         "rules": {
             "recommended": true,
             "style": {
-                "useConst": "off"
+                "useNamingConvention": {
+                    "level": "error",
+                    "options": {
+                        "conventions": [
+                            {
+                                "selector": { "kind": "const" },
+                                "formats": ["CONSTANT_CASE"]
+                            },
+                            {
+                                "selector": { "kind": "enumMember" },
+                                "formats": ["CONSTANT_CASE"]
+                            }
+                        ]
+                    }
+                }
             }
         }
     },
