@@ -1,51 +1,51 @@
-import * as THREE from 'three';
+import * as Three from 'three';
 
 // interface ICameraData {
 //     position: number[];
 //     rotation: number[];
 // }
 
-const ab = 1;
-console.log(ab);
+const A_B = 1;
+console.log(A_B);
 
-let threeChannel = new BroadcastChannel('THREE:threeChannel');
+const THREE_CHANNEL = new BroadcastChannel('THREE:threeChannel');
 let camera = null;
 
-let createRender = (canvas) => {
-    let { width, height } = canvas;
-    let scene = new THREE.Scene();
-    camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
+const CREATE_RENDER = (canvas) => {
+    const { width, height } = canvas;
+    const SCENE = new Three.Scene();
+    camera = new Three.PerspectiveCamera(75, width / height, 0.1, 1000);
     camera.position.set(0, 0, 100);
 
-    let renderer = new THREE.WebGLRenderer({ antialias: true, canvas });
+    const RENDERER = new Three.WebGLRenderer({ antialias: true, canvas });
 
-    renderer.setAnimationLoop(animate);
-    renderer.setPixelRatio(2);
+    RENDERER.setAnimationLoop(animate);
+    RENDERER.setPixelRatio(2);
 
-    let geometry = new THREE.BoxGeometry(1, 1, 1);
-    let material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
-    let cube = new THREE.Mesh(geometry, material);
+    const GEOMETRY = new Three.BoxGeometry(1, 1, 1);
+    const MATERIAL = new Three.MeshBasicMaterial({ color: 0x00ff00 });
+    const CUBE = new Three.Mesh(GEOMETRY, MATERIAL);
 
-    scene.add(cube);
+    SCENE.add(CUBE);
 
     camera.position.z = 5;
 
     function animate() {
-        cube.rotation.x += 0.01;
-        cube.rotation.y += 0.01;
-        renderer.render(scene, camera);
+        CUBE.rotation.x += 0.01;
+        CUBE.rotation.y += 0.01;
+        RENDERER.render(SCENE, camera);
     }
 };
 
 self.onmessage = ({ data: { canvas = null } }) => {
     if (canvas) {
-        createRender(canvas);
+        CREATE_RENDER(canvas);
     }
 };
 
-threeChannel.onmessage = ({ data: { type = '', data = {} } }) => {
+THREE_CHANNEL.onmessage = ({ data: { type = '', data = {} } }) => {
     if (type === 'cameraUpdate') {
-        let { position = [], rotation = [] } = data;
+        const { position = [], rotation = [] } = data;
 
         camera.position.fromArray(position);
         camera.rotation.fromArray(rotation);
