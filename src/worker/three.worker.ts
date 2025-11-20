@@ -1,48 +1,48 @@
-import * as Three from 'three';
+import * as THREE from 'three';
 
 // interface ICameraData {
 //     position: number[];
 //     rotation: number[];
 // }
-const THREE_CHANNEL = new BroadcastChannel('THREE:threeChannel');
 
+let threeChannel = new BroadcastChannel('THREE:threeChannel');
 let camera = null;
 
-const CREATE_RENDER = (canvas) => {
-    const { width, height } = canvas;
-    const SCENE = new Three.Scene();
-    camera = new Three.PerspectiveCamera(75, width / height, 0.1, 1000);
+let createRender = (canvas) => {
+    let { width, height } = canvas;
+    let scene = new THREE.Scene();
+    camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
     camera.position.set(0, 0, 100);
 
-    const RENDERER = new Three.WebGLRenderer({ antialias: true, canvas });
+    let renderer = new THREE.WebGLRenderer({ antialias: true, canvas });
 
-    RENDERER.setAnimationLoop(animate);
-    RENDERER.setPixelRatio(2);
+    renderer.setAnimationLoop(animate);
+    renderer.setPixelRatio(2);
 
-    const GEOMETRY = new Three.BoxGeometry(1, 1, 1);
-    const MATERIAL = new Three.MeshBasicMaterial({ color: 0x00ff00 });
-    const CUBE = new Three.Mesh(GEOMETRY, MATERIAL);
+    let geometry = new THREE.BoxGeometry(1, 1, 1);
+    let material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+    let cube = new THREE.Mesh(geometry, material);
 
-    SCENE.add(CUBE);
+    scene.add(cube);
 
     camera.position.z = 5;
 
     function animate() {
-        CUBE.rotation.x += 0.01;
-        CUBE.rotation.y += 0.01;
-        RENDERER.render(SCENE, camera);
+        cube.rotation.x += 0.01;
+        cube.rotation.y += 0.01;
+        renderer.render(scene, camera);
     }
 };
 
 self.onmessage = ({ data: { canvas = null } }) => {
     if (canvas) {
-        CREATE_RENDER(canvas);
+        createRender(canvas);
     }
 };
 
-THREE_CHANNEL.onmessage = ({ data: { type = '', data = {} } }) => {
+threeChannel.onmessage = ({ data: { type = '', data = {} } }) => {
     if (type === 'cameraUpdate') {
-        const { position = [], rotation = [] } = data;
+        let { position = [], rotation = [] } = data;
 
         camera.position.fromArray(position);
         camera.rotation.fromArray(rotation);

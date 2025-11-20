@@ -27,6 +27,10 @@
                             {
                                 "selector": { "kind": "enumMember" },
                                 "formats": ["CONSTANT_CASE"]
+                            },
+                            {
+                                "selector": { "kind": "let" },
+                                "formats": ["camelCase"]
                             }
                         ]
                     }
