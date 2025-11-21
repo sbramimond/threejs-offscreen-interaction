@@ -54,3 +54,4 @@ self.onmessage = async ({ data: { canvas = null } }) => {
 };
 
 export default {};
+
