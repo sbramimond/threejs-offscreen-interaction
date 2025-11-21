@@ -35,7 +35,7 @@
                         ]
                     }
                 },
-                "useConst": "error"
+                "useConst": "off"
             }
         }
     },
