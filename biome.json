@@ -1,9 +1,6 @@
 {
     "files": {
-        "includes": [
-            "package.json",
-            "src/**/*"
-        ]
+        "includes": ["package.json", "src/**/*"]
     },
     "formatter": {
         "enabled": true,
@@ -27,25 +24,19 @@
                                 "selector": {
                                     "kind": "const"
                                 },
-                                "formats": [
-                                    "CONSTANT_CASE"
-                                ]
+                                "formats": ["CONSTANT_CASE"]
                             },
                             {
                                 "selector": {
                                     "kind": "enumMember"
                                 },
-                                "formats": [
-                                    "CONSTANT_CASE"
-                                ]
+                                "formats": ["CONSTANT_CASE"]
                             },
                             {
                                 "selector": {
                                     "kind": "let"
                                 },
-                                "formats": [
-                                    "camelCase"
-                                ]
+                                "formats": ["camelCase"]
                             }
                         ]
                     }
@@ -69,9 +60,7 @@
     },
     "overrides": [
         {
-            "includes": [
-                "src/**/*.{js,ts,tsx}"
-            ],
+            "includes": ["src/**/*.{js,ts,tsx}"],
             "formatter": {
                 "indentWidth": 4
             }
