@@ -34,12 +34,13 @@ export default ({compiler = 'TypeScript', framework = 'react'}: HelloProps) => {
         let camera = new THREE.PerspectiveCamera( 75, width / height, 1, 1000 );
         let renderer = new THREE.WebGLRenderer({antialias: true, canvas});
 
-        camera.position.set( 0, 0, 100 );
+        camera.position.set( 0, 0, 10 );
         renderer.setSize(width, height);
         renderer.setClearColor(0xff0000, 1);
         renderer.render( scene, camera );
 
-        const controls = new OrbitControls( camera, renderer.domElement );
+        let controls = new OrbitControls( camera, renderer.domElement );
+
         controls.update();
 
         function animate() {
@@ -50,22 +51,37 @@ export default ({compiler = 'TypeScript', framework = 'react'}: HelloProps) => {
         renderer.setAnimationLoop( animate );
 
         controls.addEventListener('change', () => {
-            // const cameraData = {
-            //     position: camera.position.toArray(),
-            //     rotation: camera.rotation.toArray(),
-            // };
 
             threeChannel.postMessage({
                 type: 'cameraUpdate',
                 data: {
                     position: camera.position.toArray(),
                     rotation: camera.rotation.toArray(),
+                    target: controls.target.toArray(),
                 }
             });
         });
 
 
-        }, []);
+         let handleClick = (e: MouseEvent) => {
+            let rect = copyRef.current.getBoundingClientRect();
+
+            threeChannel.postMessage({
+                type: 'THREE:click',
+                data: {
+                    x: e.clientX - rect.left,
+                    y: e.clientY - rect.top,
+                },
+            });
+        };
+
+        copyRef.current.onclick = handleClick;
+
+        return () => {
+            copyRef.current.onclick = null;
+        }
+
+    }, []);
 
     useEffect(() => {
         if (!canvasRef?.current || !threeRef?.current) {
