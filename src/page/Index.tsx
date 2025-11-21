@@ -4,9 +4,7 @@ import * as Three from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 
 let chartworker = new Worker(new URL('../worker/chart.worker.ts', import.meta.url));
-
 let threeWorker = new Worker(new URL('../worker/three.worker.ts', import.meta.url));
-
 let threeChannel = new BroadcastChannel('THREE:threeChannel');
 
 // export interface HelloProps {
