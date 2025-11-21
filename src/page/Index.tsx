@@ -12,6 +12,7 @@ let chartworker = new Worker(
         import.meta.url
     )
 );
+
 let threeWorker = new Worker(
     new URL(
         '../worker/three.worker.ts',
