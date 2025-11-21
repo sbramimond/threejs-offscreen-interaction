@@ -16,9 +16,7 @@ export default (): React.ReactElement => {
         <Router>
             <Routes
                 location={location}
-                key={
-                    location.pathname
-                }
+                key={location.pathname}
             >
                 <Route
                     path="/"

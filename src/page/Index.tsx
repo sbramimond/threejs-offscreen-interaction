@@ -174,8 +174,7 @@ export default () => {
                     width: '400px',
                     height: '400px',
                 }}
-            >
-            </canvas>
+            ></canvas>
 
             <canvas
                 ref={threeRef}
@@ -185,8 +184,7 @@ export default () => {
                     width: '400px',
                     height: '400px',
                 }}
-            >
-            </canvas>
+            ></canvas>
 
             <canvas
                 ref={copyRef}
@@ -195,8 +193,7 @@ export default () => {
                 style={{
                     border: 'solid 1px #0000ff',
                 }}
-            >
-            </canvas>
+            ></canvas>
         </>
     );
 };
