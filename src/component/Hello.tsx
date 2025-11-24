@@ -3,11 +3,7 @@ export interface HelloProps {
     framework?: string;
 }
 
-export default ({
-    compiler = '',
-    framework = '',
-}: HelloProps) => {
-
+export default ({compiler = '', framework = ''}: HelloProps) => {
     return (
         <h1>
             Hello from {compiler} and {framework} !

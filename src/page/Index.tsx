@@ -15,8 +15,6 @@ let threeChannel = new BroadcastChannel('THREE:threeChannel');
 // }
 
 export default () => {
-    let x: object = {a: 1};
-    let y: object = (n: number) => n + 1;
     let canvasRef = useRef(null);
     let threeRef = useRef(null);
     let copyRef = useRef(null);
