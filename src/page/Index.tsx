@@ -3,6 +3,8 @@ import {useEffect, useRef} from 'react';
 import * as Three from 'three';
 import {OrbitControls} from 'three/addons/controls/OrbitControls.js';
 
+import Hello from '@/component/Hello';
+
 let chartworker = new Worker(new URL('../worker/chart.worker.ts', import.meta.url));
 let threeWorker = new Worker(new URL('../worker/three.worker.ts', import.meta.url));
 let threeChannel = new BroadcastChannel('THREE:threeChannel');
@@ -97,9 +99,7 @@ export default () => {
 
     return (
         <>
-            <h1>
-                Hello from {x.toString()} and {y.toString()} !
-            </h1>
+            <Hello compiler="TypeScript" framework="React" />
             <canvas
                 ref={canvasRef}
                 width={400}
