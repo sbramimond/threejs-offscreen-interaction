@@ -1,4 +1,5 @@
 import * as echarts from 'echarts';
+
 // 在Web Worker中定义global变量，ECharts需要这个
 interface ExtendedSelf extends WindowOrWorkerGlobalScope {
     global: typeof globalThis;
