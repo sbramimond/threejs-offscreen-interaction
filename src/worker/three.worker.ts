@@ -1,7 +1,8 @@
 import * as Three from 'three';
+import getRender from '@/render/create/render';
 
 let threeChannel = new BroadcastChannel('THREE:threeChannel');
-let camera = null;
+let iCamera = null;
 
 self.onmessage = async ({data: {canvas = null}}) => {
     if (!canvas) {
@@ -11,20 +12,10 @@ self.onmessage = async ({data: {canvas = null}}) => {
     createRender(canvas);
 };
 
-let createRender = (canvas) => {
-    let {width, height} = canvas;
-    let scene = new Three.Scene();
+let createRender = (canvas: HTMLCanvasElement) => {
+    let {camera, renderer, scene} = getRender(canvas);
 
-    camera = new Three.PerspectiveCamera(75, width / height, 1, 1000);
-    camera.position.set(0, 0, 10);
-    camera.up.set(0, 0, 1);
-
-    let renderer = new Three.WebGLRenderer({
-        antialias: true,
-        canvas,
-    });
-
-    renderer.setPixelRatio(2);
+    iCamera = camera;
     renderer.setAnimationLoop(animate);
 
     let axeHelper = new Three.AxesHelper(50);
@@ -49,19 +40,22 @@ let createRender = (canvas) => {
 };
 
 threeChannel.onmessage = ({data: {type = '', data = {}}}) => {
-    if (!camera) return;
+    if (!iCamera) return;
 
     if (type === 'cameraUpdate') {
         let {position = [], rotation = []} = data;
-        camera.position.fromArray(position);
-        camera.rotation.fromArray(rotation);
+
+        iCamera.position.fromArray(position);
+        iCamera.rotation.fromArray(rotation);
+
         return;
     }
 
     if (type === 'THREE:click') {
         let {x = 0, y = 0} = data;
         let vector = new Three.Vector3(x, y, 0);
-        console.log(vector.unproject(camera));
+
+        console.log(vector.unproject(iCamera));
     }
 };
 

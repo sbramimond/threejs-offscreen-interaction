@@ -1,7 +1,7 @@
 import {useEffect, useRef} from 'react';
 
 import * as Three from 'three';
-import {OrbitControls} from 'three/addons/controls/OrbitControls.js';
+
 
 import Hello from '@/component/index/Hello';
 import OffscreenCanvas from '@/component/OffscreenCanvas';
@@ -11,6 +11,9 @@ let threeChannel = new BroadcastChannel('THREE:threeChannel');
 import ChartWorker from '@/worker/chart.worker.ts?worker';
 import ThreeWorker from '@/worker/three.worker.ts?worker';
 
+import getRender from '@/render/create/render';
+import getControl from '@/render/create/control';
+
 import style from './Index.module.less';
 
 let chartworker = new ChartWorker();
@@ -19,10 +22,6 @@ let threeWorker = new ThreeWorker();
 export default () => {
     let copyRef = useRef<HTMLCanvasElement>(null);
 
-    // 使用自定义Hook管理Web Worker
-    // let Chart = useCanvasWorker('@/worker/chart.worker.ts?worker');
-    // useCanvasWorker('@/worker/three.worker.ts?worker', threeRef);
-
     useEffect(() => {
         if (!copyRef?.current) {
             return () => {};
@@ -30,22 +29,14 @@ export default () => {
 
         let canvas = copyRef.current;
         let {width, height} = canvas;
-
-        let scene = new Three.Scene();
-        let camera = new Three.PerspectiveCamera(75, width / height, 1, 1000);
-        let renderer = new Three.WebGLRenderer({
-            antialias: true,
-            canvas,
-        });
-
-        camera.position.set(0, 0, 10);
-        camera.up.set(0, 0, 1);
+        let {camera, renderer, scene} = getRender(canvas);
 
         renderer.setSize(width, height);
         renderer.setClearColor(0xff0000, 1);
         renderer.render(scene, camera);
 
-        let controls = new OrbitControls(camera, renderer.domElement);
+        let controls = getControl(camera, renderer);
+
         controls.update();
 
         function animate() {
@@ -101,6 +92,7 @@ export default () => {
                     height: '400px',
                 }}
             />
+
             <OffscreenCanvas
                 worker={threeWorker}
                 width={400}
@@ -110,25 +102,6 @@ export default () => {
                     height: '400px',
                 }}
             />
-            {/* <canvas
-                ref={canvasRef}
-                width={400}
-                height={400}
-                style={{
-                    width: '400px',
-                    height: '400px',
-                }}
-            ></canvas>
-
-            <canvas
-                ref={threeRef}
-                width={400}
-                height={400}
-                style={{
-                    width: '400px',
-                    height: '400px',
-                }}
-            ></canvas>
 
             <canvas
                 ref={copyRef}
@@ -137,7 +110,7 @@ export default () => {
                 style={{
                     border: 'solid 1px #0000ff',
                 }}
-            ></canvas> */}
+            ></canvas>
         </>
     );
 };
