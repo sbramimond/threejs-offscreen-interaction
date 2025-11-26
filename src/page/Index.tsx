@@ -1,4 +1,4 @@
-import {Col, Row, Button} from 'antd';
+import {Button, Col, Row} from 'antd';
 import {useEffect, useRef} from 'react';
 
 import OffscreenCanvas from '@/component/OffscreenCanvas';
@@ -77,9 +77,14 @@ export default () => {
 
     return (
         <>
-            <Button type="primary" onClick={() => {
-                Sentry.captureMessage('用户尝试进行无效操作', 'warning');
-            }}>测试</Button>
+            <Button
+                type="primary"
+                onClick={() => {
+                    Sentry.captureMessage('用户尝试进行无效操作', 'warning');
+                }}
+            >
+                测试
+            </Button>
             <Row>
                 <Col span={12}>
                     <OffscreenCanvas
@@ -115,7 +120,6 @@ export default () => {
                                 zIndex: 0,
                             }}
                         />
-
                     </div>
                 </Col>
             </Row>
