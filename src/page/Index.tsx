@@ -11,6 +11,8 @@ let threeChannel = new BroadcastChannel('THREE:threeChannel');
 import ChartWorker from '@/worker/chart.worker.ts?worker';
 import ThreeWorker from '@/worker/three.worker.ts?worker';
 
+import style from './Index.module.less';
+
 let chartworker = new ChartWorker();
 let threeWorker = new ThreeWorker();
 
@@ -86,7 +88,9 @@ export default () => {
 
     return (
         <>
-            <Hello compiler="TypeScript" framework="React" />
+            <div className={style.title}>
+                <Hello compiler="TypeScript" framework="React" />
+            </div>
 
             <OffscreenCanvas
                 worker={chartworker}
