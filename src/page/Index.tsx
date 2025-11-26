@@ -2,17 +2,15 @@ import {useEffect, useRef} from 'react';
 
 import * as Three from 'three';
 
-
 import Hello from '@/component/index/Hello';
 import OffscreenCanvas from '@/component/OffscreenCanvas';
 
 let threeChannel = new BroadcastChannel('THREE:threeChannel');
 
+import getControl from '@/render/create/control';
+import getRender from '@/render/create/render';
 import ChartWorker from '@/worker/chart.worker.ts?worker';
 import ThreeWorker from '@/worker/three.worker.ts?worker';
-
-import getRender from '@/render/create/render';
-import getControl from '@/render/create/control';
 
 import style from './Index.module.less';
 
@@ -58,7 +56,7 @@ export default () => {
         });
 
         let handleClick = (e: MouseEvent) => {
-            let rect = copyRef.current!.getBoundingClientRect();
+            let rect = copyRef.current?.getBoundingClientRect();
             threeChannel.postMessage({
                 type: 'THREE:click',
                 data: {
