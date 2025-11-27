@@ -44,7 +44,6 @@ const COLUMNS = [
     },
 ];
 
-
 export default function Count() {
     let request = useIndexStroe((state) => state.request);
     let data = useIndexStroe((state) => state.data);
