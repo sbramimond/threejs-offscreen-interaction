@@ -62,7 +62,7 @@ export default function Count() {
                         </Descriptions.Item>
                     ))}
             </Descriptions>
-            <Table dataSource={Array.isArray(data?.detail) ? data.detail : []} columns={COLUMNS} />;
+            <Table dataSource={Array.isArray(data?.detail) ? data.detail : []} columns={COLUMNS} />
         </>
     );
 }
