@@ -17,7 +17,6 @@ export let countSlice: SliceCreator<CountState> = (set: SetState<CountState>) =>
     increment: () => set((state) => ({count: state.count + 1})),
 });
 
-// 创建数据获取的slice
 export let fatchSlice: SliceCreator<DataState> = (set: SetState<DataState>) => ({
     data: {},
     request: async () => {
