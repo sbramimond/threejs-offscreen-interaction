@@ -1,8 +1,7 @@
 import {Button, Col, Row} from 'antd';
 import {useEffect, useRef} from 'react';
-
-import OffscreenCanvas from '@/component/OffscreenCanvas';
 import Count from '@/component/index/Count';
+import OffscreenCanvas from '@/component/OffscreenCanvas';
 
 let threeChannel = new BroadcastChannel('THREE:threeChannel');
 
