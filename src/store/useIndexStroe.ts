@@ -1,4 +1,4 @@
-import {create, type StoreApi} from 'zustand';
+import {create} from 'zustand';
 
 import type {SliceCreator} from './store.d';
 
