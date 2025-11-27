@@ -7,7 +7,7 @@ export default function Count() {
 
     return (
         <>
-            <Button onClick={() => increment(count)}>{count}</Button>
+            <Button onClick={increment}>[{count}]</Button>
         </>
     );
 }
