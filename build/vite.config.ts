@@ -10,7 +10,6 @@ export default defineConfig({
     publicDir: resolve('public'),
     plugins: [
         react(),
-        // 移除生产环境中的 console 语句
         removeConsole({
             // exclude: ['error', 'warn'] // 保留 error 和 warn 信息，仅移除 log 等其他 console 语句
         })
