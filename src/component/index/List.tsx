@@ -54,7 +54,7 @@ export default function Count() {
 
     return (
         <>
-            <Descriptions title="User Info">
+            <Descriptions title="Project Info">
                 {data?.fields &&
                     Object.keys(data.fields)?.map((key) => (
                         <Descriptions.Item label={key} key={key}>
