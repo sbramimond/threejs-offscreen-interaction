@@ -1,4 +1,4 @@
-import host from "./host";
+import host from './host';
 
 let { protocol } = location;
 const ROOT_URL = `${protocol}//${host}`;

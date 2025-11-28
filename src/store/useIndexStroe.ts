@@ -1,8 +1,8 @@
-import { create } from "zustand";
+import {create} from 'zustand';
 
-import { api } from "@/api";
+import {api} from '@/api';
 
-import type { SetState, SliceCreator } from "./store.d";
+import type {SetState, SliceCreator} from './store.d';
 
 interface CountState {
     count: number;
@@ -25,8 +25,7 @@ export let fatchSlice: SliceCreator<DataState> = (set: SetState<DataState>) => (
         try {
             let data = await api.getDetail();
             set({ data });
-        }
-        catch (error) {
+        } catch (error) {
             // console.error(error);
         }
     },

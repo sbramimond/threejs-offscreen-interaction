@@ -1,14 +1,14 @@
 import React from 'react';
-import {Route, BrowserRouter as Router, Routes} from 'react-router-dom';
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 
-import {Layout} from 'antd';
+import { Layout } from 'antd';
 
 import IndexPage from '@/page/Index';
 import NotFound from '@/page/NotFound';
 
 import Hello from '@/component/index/Hello';
 
-let {Header, Footer, Content} = Layout;
+let { Header, Footer, Content } = Layout;
 
 let layoutStyle = {
     borderRadius: 8,

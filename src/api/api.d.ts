@@ -16,8 +16,8 @@ interface RequestOption<T> {
 
 interface RequestConfig<T> {
     query?: T;
-    "x-silent"?: boolean;
-    "x-message"?: boolean;
+    'x-silent'?: boolean;
+    'x-message'?: boolean;
 }
 interface Api<U, T> {
     [u: string]: (...args: any[]) => Promise<Record>;

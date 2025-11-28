@@ -1,7 +1,7 @@
-let host = "";
+let host = '';
 
 /*<prod>*/
-host = "./";
+host = './';
 /*</prod>*/
 
 /*<dev>*/
