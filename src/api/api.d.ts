@@ -17,5 +17,5 @@ interface RequestOption {
 }
 
 interface Api<U, T> {
-    [u: string]: T & any;
+    [u: string]: T & RequestOption;
 }
