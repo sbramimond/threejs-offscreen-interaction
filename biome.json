@@ -1,6 +1,6 @@
 {
     "files": {
-        "includes": ["package.json", "src/**/*"]
+        "includes": ["package.json", "src/**/*", "test/**/*"]
     },
     "formatter": {
         "enabled": true,
