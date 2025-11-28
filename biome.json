@@ -9,7 +9,9 @@
         "indentWidth": 4,
         "lineEnding": "lf",
         "lineWidth": 120,
-        "attributePosition": "auto"
+        "attributePosition": "auto",
+        "bracketSameLine": false,
+        "bracketSpacing": false
     },
     "linter": {
         "enabled": true,
