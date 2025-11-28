@@ -1,6 +1,6 @@
-interface RequestOption {
+interface RequestOption<T> {
     url: string;
-    // biome-ignore lint: 调试阶段需要
+    // biome-ignore lint: axios 默认就是用这个
     baseURL?: string;
     method?: string;
     headers?: Record<string, string>;
@@ -10,12 +10,15 @@ interface RequestOption {
     responseEncoding?: string;
     maxRedirects?: number;
     paramsSerializer?: (params: Record<string, string>) => string;
-    'x-silent'?: boolean;
-    'x-message'?: boolean;
-    params?: Record<string, any>;
-    data?: any;
+    data?: T;
+    params?: T;
 }
 
+interface RequestConfig<T> {
+    query?: T;
+    "x-silent"?: boolean;
+    "x-message"?: boolean;
+}
 interface Api<U, T> {
-    [u: string]: T & RequestOption;
+    [u: string]: (...args: any[]) => Promise<Record>;
 }

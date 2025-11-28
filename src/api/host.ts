@@ -1,11 +1,11 @@
-let host = '';
+let host = "";
 
 /*<prod>*/
-host = 'www.baidu.com';
+host = "./";
 /*</prod>*/
 
 /*<dev>*/
-host = 'test.baidu.com';
+host = location.host;
 /*</dev>*/
 
 export default host;

@@ -1,31 +1,28 @@
-import host from './host';
-export default function request(url = '/', method = 'GET', payload = {}, config = {}) {
-    let option: RequestOption = {
+import host from "./host";
+export default function request<T>(url = "/", method = "GET", payload = {}, config: RequestConfig<T> = {}) {
+    let option: RequestOption<Record<symbol, any>> = {
         url,
-        // biome-ignore lint: 调试阶段需要
+        // biome-ignore lint: axios 默认就是用这个
         baseURL: host,
         method,
-        headers: {},
         timeout: 10 * 1000,
         withCredentials: false,
-        responseType: 'json',
-        responseEncoding: 'utf8',
+        responseType: "json",
+        responseEncoding: "utf8",
         maxRedirects: 5,
-        // paramsSerializer: function paramsSerializer(params) {
-        //     return JSON.stringify(params);
-        // },
-        'x-silent': false,
-        'x-message': false,
+        paramsSerializer: function paramsSerializer(params) {
+            return new URLSearchParams(params).toString();
+        },
     };
 
-    if (method === 'GET') {
+    if (method === "GET") {
         option.params = payload;
-    } else if (method === 'POST') {
-        option.params = config.params || {};
+    } else if (method === "POST") {
+        option.params = config?.query || {};
         option.data = payload;
     } else {
         option.data = payload;
     }
 
-    return {...option, ...config};
+    return { ...option, ...config };
 }
