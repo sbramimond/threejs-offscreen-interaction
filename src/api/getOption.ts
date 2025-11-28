@@ -17,10 +17,12 @@ export default function request<T>(url = "/", method = "GET", payload = {}, conf
 
     if (method === "GET") {
         option.params = payload;
-    } else if (method === "POST") {
+    }
+    else if (method === "POST") {
         option.params = config?.query || {};
         option.data = payload;
-    } else {
+    }
+    else {
         option.data = payload;
     }
 
