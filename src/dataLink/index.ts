@@ -1,7 +1,7 @@
-import Worker from './socket.worker.ts?worker';
+import Worker from '@/dataLink/socket.worker.ts?worker';
+
+let worker = new Worker();
 
 export default function () {
-    let worker = new Worker();
-
     worker.postMessage('init');
 }
