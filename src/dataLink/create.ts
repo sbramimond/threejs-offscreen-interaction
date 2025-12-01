@@ -17,11 +17,11 @@ export default async function () {
 
         let socket = new Socket(url, option);
 
-        socket.onMessage.addListener((data: any) => {
+        socket.onMessage.addListener((data: string | ArrayBuffer) => {
             return parser(threshold, dataType, data);
         });
 
-        socket.onError.addListener((error) => {
+        socket.onError.addListener((error: Error) => {
             console.log(error);
         });
 
