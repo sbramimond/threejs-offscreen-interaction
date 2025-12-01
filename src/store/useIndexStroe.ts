@@ -1,4 +1,5 @@
 import {create} from 'zustand';
+import { devtools } from 'zustand/middleware'
 
 import {api} from '@/api';
 
@@ -29,7 +30,15 @@ export let fatchSlice: SliceCreator<DataState> = (set: SetState<DataState>) => (
     },
 });
 
-export default create<CountState & DataState>((set, get, api) => ({
-    ...countSlice(set, get, api),
-    ...fatchSlice(set, get, api),
-}));
+// export default create<CountState & DataState>((set, get, api) => ({
+//     ...countSlice(set, get, api),
+//     ...fatchSlice(set, get, api),
+// }));
+
+export default create<CountState & DataState>()(
+    devtools((set, get, api) => ({
+        ...countSlice(set, get, api),
+        ...fatchSlice(set, get, api),
+    }))
+);
+
