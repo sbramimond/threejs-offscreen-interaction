@@ -9,4 +9,14 @@
 
 ## 可以使用gltf-transfrom 来转换gltf文件
 
+## 启动
+```bash
+pnpm dev
+```
+
+## 启动webSocket
+```bash
+cd server
+node index.js
+```
 
