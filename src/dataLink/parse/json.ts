@@ -6,6 +6,6 @@ export default function (threshold: number, _dataType: string = 'string', data: 
     }
 
     time = Date.now();
-
+    console.log('json', data);
     return JSON.parse(JSON.stringify(data));
 }

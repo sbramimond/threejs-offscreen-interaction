@@ -1,10 +1,12 @@
 import './socket.d';
 
+import { socketChannel } from '@/messageChannel';
+
 import config from './config';
 import Socket from './socket';
 
 export default async function () {
-    let map: Map<symbol, Socket> = new Map();
+    let map: Map<string, Socket> = new Map();
 
     for (let [key, value] of Object.entries(config)) {
         let {
@@ -13,6 +15,7 @@ export default async function () {
             parser = (...args) => args,
             dataType = 'string',
             threshold = 80,
+            tag = '',
         }: WebsocketPromiseOption = value;
 
         let socket = new Socket(url, option);
@@ -27,11 +30,11 @@ export default async function () {
 
         try {
             await socket.open();
-        } catch (_error) {
-            console.log(_error);
+        } catch (error) {
+            socketChannel.postMessage({type: 'error', message: error.message, tag});
         }
 
-        map.set(Symbol(key), socket);
+        map.set(key, socket);
     }
 
     return map;

@@ -8,7 +8,4 @@ export default class Websocket extends Socket {
 
         super(url, option);
     }
-    override send = (data: any): void => {
-        this.send(JSON.stringify(data));
-    };
 }

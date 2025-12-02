@@ -5,5 +5,6 @@ export default function (threshold: number, _dataType: string = 'arraybuffer', d
         return {};
     }
 
+    console.log('arraybuffer', data);
     return {};
 }
