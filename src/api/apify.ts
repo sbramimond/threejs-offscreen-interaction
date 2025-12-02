@@ -9,7 +9,7 @@ export default function apify(i: Axios, method: string, list = {}) {
         let url = list[key];
 
         result[key] = (...parameter: any) => {
-            return i(getOption(url, method.toUpperCase(), ...parameter) as AxiosRequestConfig);
+            return i.request(getOption(url, method.toUpperCase(), ...parameter) as AxiosRequestConfig);
         };
     });
 
