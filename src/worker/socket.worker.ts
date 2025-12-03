@@ -1,8 +1,8 @@
 import type WebSocketAsPromised from 'websocket-as-promised';
 import create from '@/dataLink/create';
 
-self.onmessage = async () => {
-    let socketMap: Map<string, WebSocketAsPromised> = await create();
+let socketMap: Map<string, WebSocketAsPromised> = await create();
 
+self.onmessage = () => {
     socketMap.get('a').sendPacked({a: 1});
 };

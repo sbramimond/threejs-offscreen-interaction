@@ -9,7 +9,7 @@
         // Environment Settings
         // See also https://aka.ms/tsconfig/module
         "module": "esnext",
-        "target": "es6",
+        "target": "esnext",
         "types": ["react", "react-dom"],
         // For nodejs:
         "lib": ["esnext", "DOM"],
@@ -60,7 +60,7 @@
         "paths": {
             "@/*": ["./src/*"]
         },
-        "ignoreDeprecations": "5.0"
+        "ignoreDeprecations": "5.0",
     },
     "exclude": [
         "**/*.test.ts",
@@ -69,7 +69,11 @@
     "include": [
         "./src/**/*",
         "./@type/**/*"
-    ]
+    ],
+    "ts-node": {
+        "esm": true,
+        "experimentalSpecifierResolution": "node"
+    }
 }
 
 

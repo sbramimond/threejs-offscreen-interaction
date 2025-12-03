@@ -1,7 +1,10 @@
+import path from 'path';
+
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
-import path from 'path';
+
 import removeConsole from 'vite-plugin-remove-console';
+import topLevelAwait from 'vite-plugin-top-level-await';
 
 let resolve = (dir: string) => path.join(process.cwd(), dir);
 
@@ -12,7 +15,11 @@ export default defineConfig({
         react(),
         removeConsole({
             // exclude: ['error', 'warn'] // 保留 error 和 warn 信息，仅移除 log 等其他 console 语句
-        })
+        }),
+        topLevelAwait({
+            promiseExportName: '__tla',
+            promiseImportName: i => `__tla_${i}`
+        }),
     ],
     resolve: {
         alias: {
@@ -47,7 +54,8 @@ export default defineConfig({
                     vendors: ['axios', 'zustand', 'protobufjs']
                 }
             }
-        }
+        },
+        minify: 'terser',
     },
     worker: {
         format: 'es'
@@ -65,6 +73,23 @@ export default defineConfig({
         }
     },
     optimizeDeps: {
-        include: ['react', 'react-dom', 'Sentry']
+        include: ['react', 'react-dom', 'three', 'echarts'],
+        esbuildOptions: {
+            loader: {
+                '.js': 'jsx',
+                '.ts': 'tsx',
+            },
+            target: 'esnext',
+            supported: {
+                'import-meta': true,
+                'top-level-await': true,
+                'decorators': true,
+                'bigint': true,
+                'nullish-coalescing': true,
+                'logical-assignment': true,
+                'optional-catch-binding': true,
+            },
+        },
+        force: true
     }
 });
