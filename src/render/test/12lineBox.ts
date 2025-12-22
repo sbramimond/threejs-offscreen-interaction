@@ -1,5 +1,6 @@
-import * as Three from 'three';
-import {Wireframe} from 'three/examples/jsm/Addons.js';
+import * as THREE from 'three';
+
+// import {Wireframe} from 'three/examples/jsm/Addons.js';
 import {LineMaterial} from 'three/examples/jsm/lines/LineMaterial.js';
 import {LineSegments2} from 'three/examples/jsm/lines/LineSegments2.js';
 import {LineSegmentsGeometry} from 'three/examples/jsm/lines/LineSegmentsGeometry.js';
@@ -62,7 +63,7 @@ const LINE_DATA = [
     ],
 ];
 
-export default function ({scene}: {scene: Three.Scene}): void {
+export default function ({scene}: {scene: THREE.Scene}): void {
     let material = new LineMaterial({
         linewidth: 5,
         color: 0x00ff00,
@@ -85,7 +86,7 @@ export default function ({scene}: {scene: Three.Scene}): void {
         //     console.log('Line Box Clicked', event);
         // });
 
-        // let box3 = new Three.Box3().setFromObject(cube);
+        // let box3 = new THREE.Box3().setFromObject(cube);
         // let box = new THREE.Box3Helper(box3, 0x00ff00);
         // scene.add(box);
 
