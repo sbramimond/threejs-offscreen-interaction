@@ -1,4 +1,4 @@
-import * as THREE from 'three';
+import * as Three from 'three';
 
 // import {Wireframe} from 'three/examples/jsm/Addons.js';
 import {LineMaterial} from 'three/examples/jsm/lines/LineMaterial.js';
@@ -63,7 +63,7 @@ const LINE_DATA = [
     ],
 ];
 
-export default function ({scene}: {scene: THREE.Scene}): void {
+export default function ({scene}: {scene: Three.Scene}): void {
     let material = new LineMaterial({
         linewidth: 5,
         color: 0x00ff00,
