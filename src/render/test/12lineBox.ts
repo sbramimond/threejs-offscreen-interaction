@@ -88,6 +88,10 @@ export default function ({scene}: {scene: Three.Scene}): void {
         // let box3 = new Three.Box3().setFromObject(cube);
         // let box = new THREE.Box3Helper(box3, 0x00ff00);
         // scene.add(box);
+
+        // let wireframe = new Wireframe(geometry, material);
+
+        // scene.add(wireframe);
         scene.add(cube);
     });
 }
