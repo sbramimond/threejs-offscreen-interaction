@@ -10,7 +10,7 @@
         // See also https://aka.ms/tsconfig/module
         "module": "esnext",
         "target": "esnext",
-        "types": ["react", "react-dom"],
+        "types": ["react", "react-dom", "three", "three.interaction"],
         // For nodejs:
         "lib": ["esnext", "DOM"],
         // "types": ["node"],
@@ -75,8 +75,3 @@
         "experimentalSpecifierResolution": "node"
     }
 }
-
-
-
-
-

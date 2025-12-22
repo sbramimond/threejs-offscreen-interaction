@@ -69,6 +69,9 @@ export default defineConfig({
     worker: {
         format: 'es'
     },
+    define: {
+        'global': 'globalThis', // 将 global 指向 globalThis
+    },
     server: {
         port: 8080,
         open: true,
