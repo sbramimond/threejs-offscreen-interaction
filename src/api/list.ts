@@ -8,6 +8,6 @@ export let post = {
 };
 
 export let get = {
-    getDetail: `${ROOT_URL}/api/getDetail`,
-    getGen: `${ROOT_URL}/v1/api/supervise/genQR`,
+    getDetail: `${ROOT_URL}/apis/getDetail`,
+    getGen: `${ROOT_URL}/v1/apis/supervise/genQR`,
 };

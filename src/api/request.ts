@@ -42,20 +42,16 @@ instance.interceptors.response.use(
             response.status = 200;
         }
 
-        if (status >= 200 && status < 300) {
-            if (code === 200) {
-                return data;
-            } else if (code === 403) {
-                // store.set('Authorization', '');
-                location.hash = '/login';
-            }
-
-            notify(false, `[Request]: Error code ${code} Message: ${msg}`);
-
-            return Promise.reject(response);
+        if ([200, 304].includes(status)) {
+            return data;
+        }
+        else if (status === 401) {
+            location.hash = '/login';
         }
 
-        return {};
+        notify(false, `[Request]: Error code ${code} Message: ${msg}`);
+
+        return Promise.reject(response);
     },
     (error) => {
         // $load && $load.close();

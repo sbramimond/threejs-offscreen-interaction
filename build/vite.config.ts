@@ -77,11 +77,11 @@ export default defineConfig({
         open: true,
         host: true,
         proxy: {
-            // '/api': {
-            //     target: 'http://localhost:9200',
-            //     changeOrigin: true,
-            //     rewrite: (path) => path.replace(/^\/api/, '/api')
-            // },
+            '/apis': {
+                target: 'http://localhost:3000',
+                changeOrigin: true,
+                rewrite: path => path.replace(/^\/api/, '/api')
+            },
         }
     },
     optimizeDeps: {
