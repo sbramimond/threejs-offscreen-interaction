@@ -44,8 +44,7 @@ instance.interceptors.response.use(
 
         if ([200, 304].includes(status)) {
             return data;
-        }
-        else if (status === 401) {
+        } else if (status === 401) {
             location.hash = '/login';
         }
 
