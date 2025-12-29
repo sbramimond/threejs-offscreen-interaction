@@ -1,4 +1,4 @@
-const DSN = 'http://bdfad8fb24be4f40bdbbd3ddba028ded@localhost:9200/2';
+const DSN = 'http://77db99e3d9934f95ba7640067074cf3b@localhost:9200/2';
 
 export default function sentry(
     id: string = Date.now().toString(),
